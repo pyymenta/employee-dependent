@@ -1,0 +1,6 @@
+type Employee {
+  registrationId: int!
+  name: String!
+  currentPosition: String!
+  currentSalary: float!
+}
