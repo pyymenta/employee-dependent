@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const DependentSchema = new mongoose.Schema({
   employeeId: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Employee',
   },
   name: {
     type: String,
