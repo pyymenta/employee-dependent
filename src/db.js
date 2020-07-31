@@ -1,3 +1,5 @@
+require('../src/models/Dependent');
+
 const mongoose = require('mongoose');
 const Employee = require('../src/models/Employee');
 
