@@ -15,7 +15,9 @@ Employee.schema.virtual('dependents', {
 const getAllEmployees = async function () {
   const employees = await Employee.find().populate('dependents').exec();
 
-  console.log(employees);
+  return employees;
+}
+
 }
 
 getAllEmployees()
