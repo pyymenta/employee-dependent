@@ -18,6 +18,13 @@ const getAllEmployees = async function () {
   return employees;
 }
 
+const getEmployeeById = async function (_id) {
+  const employee = await Employee.findById(_id).populate('dependents').exec();
+
+  return employee;
 }
 
-getAllEmployees()
+module.exports = {
+  getAllEmployees,
+  getEmployeeById
+}
