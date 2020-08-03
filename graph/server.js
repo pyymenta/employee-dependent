@@ -2,7 +2,7 @@ const cors = require('cors');
 const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
 const graphqlUtils = require('./utils');
-// const db = require('../src/db');
+const resolvers = require('./resolvers');
 
 const PORT = 8000;
 
@@ -13,8 +13,6 @@ serverApp.use(cors());
 graphqlUtils.setupGraphQLTypes().then(types => {
   const joinedTypes = types.join('');
   const typeDefs = gql(joinedTypes);
-
-  const resolvers = {}
 
   const apolloServer = new ApolloServer({typeDefs, resolvers});
 
