@@ -1,7 +1,7 @@
-require('../src/models/Dependent');
-
 const mongoose = require('mongoose');
+
 const Employee = require('../src/models/Employee');
+const Dependent = require('../src/models/Dependent');
 
 mongoose.connect('mongodb://pyymenta:admir@localhost:27017', {
   useNewUrlParser: true,
@@ -18,6 +18,12 @@ const getAllEmployees = async function () {
   });
 }
 
+const getDependentsByEmployeeId = async function (employeeId) {
+  const dependents = await Dependent.find({ employeeId }).exec();
+
+  return dependents;
+}
+
 const getEmployeeById = async function (_id) {
   const employee = await Employee.findById(_id).populate('dependents').exec();
 
@@ -26,5 +32,6 @@ const getEmployeeById = async function (_id) {
 
 module.exports = {
   getAllEmployees,
-  getEmployeeById
+  getEmployeeById,
+  getDependentsByEmployeeId
 }
