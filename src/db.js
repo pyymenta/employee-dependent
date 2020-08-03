@@ -8,15 +8,8 @@ mongoose.connect('mongodb://pyymenta:admir@localhost:27017', {
   useUnifiedTopology: true
 });
 
-Employee.schema.virtual('dependents', {
-  ref: 'Dependent',
-  localField: '_id',
-  foreignField: 'employeeId',
-  justOne: false,
-});
-
 const getAllEmployees = async function () {
-  const employees = await Employee.find().populate('dependents').exec();
+  const employees = await Employee.find().exec();
 
   return employees.map(employee => {
     employee.registrationId = employee._id.toString();
