@@ -3,7 +3,10 @@ require('../src/models/Dependent');
 const mongoose = require('mongoose');
 const Employee = require('../src/models/Employee');
 
-mongoose.connect('mongodb://pyymenta:admir@localhost:27017', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://pyymenta:admir@localhost:27017', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
 Employee.schema.virtual('dependents', {
   ref: 'Dependent',
@@ -15,7 +18,11 @@ Employee.schema.virtual('dependents', {
 const getAllEmployees = async function () {
   const employees = await Employee.find().populate('dependents').exec();
 
-  return employees;
+  return employees.map(employee => {
+    employee.registrationId = employee._id.toString();
+
+    return employee;
+  });
 }
 
 const getEmployeeById = async function (_id) {
