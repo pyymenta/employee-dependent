@@ -1,6 +1,7 @@
 type Employee {
-  registrationId: int!
+  registrationId: Int!
   name: String!
   currentPosition: String!
-  currentSalary: float!
+  currentSalary: Float!
+  dependents: [Dependent]
 }
