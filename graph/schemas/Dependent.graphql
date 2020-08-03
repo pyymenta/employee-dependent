@@ -1,4 +1,5 @@
 type Dependent {
+  _id: String!
   name: String!
   kinship: String!
 }
