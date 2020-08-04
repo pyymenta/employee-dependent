@@ -4,7 +4,7 @@
   "description": "A simple employee-dependent management project with NodeJS, MongoDB, GraphQL and React",
   "main": "index.js",
   "scripts": {
-    "start:graph": "node graph/server.js",
+    "start:graph": "node graph/server.js"
   },
   "repository": {
     "type": "git",
